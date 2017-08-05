@@ -12,35 +12,31 @@ public class MessageService {
 	private Map<Long, Message> messages = DatabaseClass.getAllMessages();
 
 	public MessageService() {
-		messages.put(1L, new Message(1,"Hello Jaini", "Jaini"));
-		messages.put(2L, new Message(2,"Hello world", "Jaini"));
+		messages.put(1L, new Message(1, "Hello Jaini", "Jaini"));
 	}
 
 	public List<Message> getAllMessages() {
 		return new ArrayList<Message>(messages.values());
 
 	}
-	
-	public Message getMessage(long id){
+
+	public Message getMessage(long id) {
 		return messages.get(id);
 	}
-	
-	public Message addMessage(Message message){
-		message.setId(messages.size()+1);
+
+	public Message addMessage(Message message) {
+		message.setId(messages.size() + 1);
 		messages.put(message.getId(), message);
 		return message;
 	}
-	
-	public Message updateMessage(Message message){
-		if(messages.containsKey(message.getId())){
-			messages.put(message.getId(), message);
-			return message;
-		}
-		return null;
+
+	public Message updateMessage(Message message) {
+		messages.put(message.getId(), message);
+		return message;
 	}
-	
-	public Message removeMessage(long id){
-		return messages.remove(id);
+
+	public void removeMessage(long id) {
+		 messages.remove(id);
 	}
 
 }
