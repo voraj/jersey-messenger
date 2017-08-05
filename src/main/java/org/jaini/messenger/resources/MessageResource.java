@@ -16,20 +16,19 @@ import org.jaini.messenger.model.Message;
 import org.jaini.messenger.services.MessageService;
 
 @Path("/messages")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 public class MessageResource {
 
 	MessageService messageService = new MessageService();
 
 	@GET
-	@Produces(MediaType.APPLICATION_JSON)
 	public List<Message> getMessages() {
 		return messageService.getAllMessages();
 	}
 
 	@PUT
 	@Path("/{messageId}")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
 	public Message putMessage(@PathParam("messageId") long id, Message message) {
 		message.setId(id);
 		return messageService.updateMessage(message);
@@ -37,14 +36,11 @@ public class MessageResource {
 
 	@GET
 	@Path("/{messageId}")
-	@Produces(MediaType.APPLICATION_JSON)
 	public Message getMessage(@PathParam("messageId") long id) {
 		return messageService.getMessage(id);
 	}
 
 	@POST
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
 	public Message postMessage(Message message) {
 		return messageService.addMessage(message);
 	}
