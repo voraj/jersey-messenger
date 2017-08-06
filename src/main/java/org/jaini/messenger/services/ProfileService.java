@@ -11,6 +11,10 @@ public class ProfileService {
 
 	private Map<String, Profile> profiles = DatabaseClass.getProfiles();
 
+	public ProfileService() {
+		profiles.put("Jaini", new Profile(1L, "Jaini", "Jaini", "Vora"));
+	}
+
 	public ArrayList<Profile> getAllProfiles() {
 		return new ArrayList<Profile>(profiles.values());
 	}
