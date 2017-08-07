@@ -12,7 +12,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import org.jaini.messenger.model.Message;
 import org.jaini.messenger.model.Profile;
 import org.jaini.messenger.services.ProfileService;
 
@@ -35,14 +34,13 @@ public class ProfileResource {
 	}
 
 	@POST
-	public Profile postMessage(Profile profile) {
+	public Profile postProfile(Profile profile) {
 		return profileService.addProfile(profile);
 	}
 
 	@PUT
 	@Path("/{profileName}")
-	public Profile putMessage(@PathParam("profileName") String profileName,
-			Profile profile) {
+	public Profile putMessage(@PathParam("profileName") String profileName, Profile profile) {
 		profile.setProfileName(profileName);
 		return profileService.updateProfile(profile);
 	}
